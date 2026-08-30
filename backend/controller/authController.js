@@ -26,7 +26,7 @@ export const signupUser = async (req, res) => {
     }
 }
 
-export const login = async (req, res) => {
+export const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
@@ -42,7 +42,7 @@ export const login = async (req, res) => {
         const token = jwt.sign(
             {id: user.id},
             process.env.JWT_SECRET,
-            {expiresIn: "7D"}
+            {expiresIn: "7d"}
         );
 
         res.json({
